@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="" default="all" basedir=".">
+
+	<property name="version" value="1.1.0" />
+	<property name="pluginname" value="Osm_akuechler" />
+	<property name="dist-folder" value="dist" />
+	<property name="build-folder" value="${dist-folder}/build" />
+
+	<target name="clean">
+		<delete dir="${dist-folder}" />
+		<delete dir="${build-folder}" />
+	</target>
+
+	<target name="prepare">
+		<mkdir dir="${dist-folder}" />
+		<mkdir dir="${build-folder}" />
+	</target>
+
+	<target name="pack" depends="prepare,build">
+		<zip destfile="${dist-folder}/${pluginname}_${version}.zip" basedir="${build-folder}" />
+	</target>
+
+	<target name="build" depends="prepare">
+		<copy todir="${build-folder}">
+			<fileset dir="${basedir}">
+				<include name="leaflet/**" />
+				<include name="licenses/**" />
+				<include name="${pluginname}.php" />
+				<include name="${pluginname}.xml" />
+				<include name="index.html" />
+			</fileset>
+		</copy>
+		<replace file="${build-folder}/${pluginname}.xml" token="@version@" value="${version}" />
+	</target>
+
+	<target name="all" depends="clean,pack" />
+</project>

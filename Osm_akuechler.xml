@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content" method="upgrade">
+  <name>OSM Plugin</name>
+  <creationDate>Januar 12, 2014</creationDate>
+  <author>Ariel Küchler</author>
+  <authorEmail>ariel@kuechler.info</authorEmail>
+  <authorUrl>http://www.kuechler.info</authorUrl>
+  <copyright>Ariel Küchler</copyright>
+  <license>MIT License or GPL-3.0, Leaflet is provided under the BSD 2-Clause License, see attached files</license>
+  <version>@version@</version>
+  <description>
+        <![CDATA[
+        <h1>OSM Plugin</h1>
+        <p>by Ariel K&uuml;chler</p>
+        <p>see <a href="https://www.kuechler.info/osm">https://www.kuechler.info/osm</a></p>
+	    <h2>Versions</h2>
+        <ol>
+        <li>1.1.0
+       		<ul>
+            <li>It is possible to configurate the Retina detection of the Leaflet library. Default is activate.</li>
+            <li>Add possibility to configurate copyright hint and max zoom level.</li>
+            </ul>
+        </li>
+        <li>1.0.6
+       		<ul>
+            <li>leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#071-december-6-2013">0.7.1</a></li>
+            </ul>
+        </li>
+        <li>1.0.5
+       		<ul>
+            <li>leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#062-june-28-2013">0.6.2</a></li>
+            <li>Possible to switch to Cloundflares <a href="http://cdnjs.com/">CDNJS</a>.</li>
+            </ul>
+        </li>
+        <li>1.0.4
+            <ul>
+            <li>IE CSS usage,</li> 
+            <li>not run on admin pages,</li> 
+            <li>no backslash at Windows systems in HTML,</li> 
+            <li>copyright and maximal zoom configurable,</li>
+            <li>better code</li>
+            </ul>
+        </li>
+        <li>1.0.3 
+            <ul>
+            <li>leaflet <a href="http://leafletjs.com/2012/10/25/leaflet-0-4-5-bugfix-release-and-plans-for-0.5.html">0.4.5</a></li>
+            </ul>
+        </li>
+        <li>1.0.2 
+            <ul>
+            <li>Bugfix "+" to "." String concat</li>
+            </ul>
+        </li>
+        <li>1.0.1 
+            <ul>
+            <li>better code</li>
+            </ul>
+        </li>
+        <li>1.0.0 
+            <ul>
+            <li>initial version, leaflet 0.4</li>
+            </ul>
+        </li>
+        </ol>
+        ]]> 
+  </description>
+  <files>
+    <folder>leaflet</folder>
+    <folder>licenses</folder>
+    <filename plugin="Osm_akuechler">Osm_akuechler.php</filename>
+    <filename>index.html</filename>
+  </files>
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="url" type="url" default="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" label="Tiles URL"
+          maxlength="1024" description="URL for tiles."></field>
+          
+        <field name="copyright" type="text" default='&#169; &lt;a href="http://www.openstreetmap.org" target="_blank"&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"&gt;CC BY-SA&lt;/a&gt;' 
+          filter="raw" maxlength="1024" label="Copyright" description="Copyright text to diplay."></field>
+        
+        <field name="maxZoom" type="integer" default="18" label="Max Zoom" 
+        	description="The max zoom level of tiles." first="1" last="18" step="1" />
+        
+        <field name="cdn-cloudflare" type="radio" default="0" label="Use CDN JS" 
+        	description="Use Cloudflares CDNJS or local files">
+			<option value="0">Local usage</option>
+			<option value="1">CDN usage HTTP</option>
+			<option value="2">CDN usage HTTPS</option>
+		</field>
+		
+		<field name="detect-retina" type="list" default="1" label="Detect Retina" 
+	    	description="Activate the Retina detection of Leaflet library.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+      </fieldset>
+    </fields>
+  </config>
+</extension>
