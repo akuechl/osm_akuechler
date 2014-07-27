@@ -2,7 +2,7 @@
 /**
  * @version      $Id$
  * @package      Joomla
- * @copyright    Copyright (C) 2011-2012 Ariel Küchler. All rights reserved.
+ * @copyright    Copyright (C) 2011-2014 Ariel Küchler. All rights reserved.
  * @license      MIT License (http://opensource.org/licenses/mit-license copyright information see above) OR GPL-3.0 (http://opensource.org/licenses/gpl-3.0)
  *
  * Example: {osm height='400' lat='50.9918' lon='13.7815' zoom='14' popup='<h3>Kinder- und Jugendbauernhof Nickern e.V.</h3><p><a href="http://www.kinderundjugendbauernhof.de/">Homepage</a></p>'}
@@ -25,7 +25,29 @@ class plgContentOsm_akuechler extends JPlugin
 	var $cdnCloudflare = 0;
 	
 	var $detectRetina = true;
-
+	
+	var $dragging = true;
+	
+	var $touchZoom = true;
+	
+	var $scrollWheelZoom = true;
+	
+	var $doubleClickZoom = true;
+	
+	var $boxZoom = true;
+	
+	var $tap = true;
+	
+	var $tapTolerance = 15;
+	
+	var $trackResize = true;
+	
+	var $worldCopyJump = false;
+	
+	var $closePopupOnClick = true;
+	
+	var $bounceAtZoomLimits = true;
+	
 	function plgContentOsm_akuechler( &$subject, $config )
 	{
 		parent::__construct( $subject, $config );
@@ -60,11 +82,11 @@ class plgContentOsm_akuechler extends JPlugin
 			
 			if ($this->useCdn()) {
 				if ($this->useHttpsCdn()) {
-					$document->addStyleSheet('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.1/leaflet.css');
-					$document->addScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.1/leaflet.js');
+					$document->addStyleSheet('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css');
+					$document->addScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js');
 				}else {
-					$document->addStyleSheet('http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.1/leaflet.css');
-					$document->addScript('http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.1/leaflet.js');
+					$document->addStyleSheet('http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css');
+					$document->addScript('http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js');
 				}
 			} else {
 				$document->addStyleSheet('plugins/content/Osm_akuechler/leaflet/leaflet.css');
@@ -91,10 +113,22 @@ class plgContentOsm_akuechler extends JPlugin
 		$maxZoom = $this->params->get('maxZoom', $this->maxZoom);
 		$baseurl = JURI::base( true );
 		$detectRetina = $this->params->get('detect-retina', $this->detectRetina);
-
+		// 
+	    $dragging = $this->params->get('dragging', $this->dragging);
+		$touchZoom = $this->params->get('touchZoom', $this->touchZoom);
+		$scrollWheelZoom = $this->params->get('scrollWheelZoom', $this->scrollWheelZoom);
+		$doubleClickZoom = $this->params->get('doubleClickZoom', $this->doubleClickZoom);
+		$boxZoom = $this->params->get('boxZoom', $this->boxZoom);
+		$tap = $this->params->get('tap', $this->tap);
+		$tapTolerance = $this->params->get('tapTolerance', $this->tapTolerance);
+		$trackResize = $this->params->get('trackResize', $this->trackResize);
+		$worldCopyJump = $this->params->get('worldCopyJump', $this->worldCopyJump);
+		$closePopupOnClick = $this->params->get('closePopupOnClick', $this->closePopupOnClick);
+		$bounceAtZoomLimits = $this->params->get('bounceAtZoomLimits', $this->bounceAtZoomLimits);
+	
 		$r = "\n";
 		$r .= "<div id='map$uuid' style='height:${height}px'></div>\n";
-		$r .= "<script type=\"text/javascript\">var map$uuid = new L.Map('map$uuid');";
+		$r .= "<script type=\"text/javascript\">var map$uuid = new L.Map('map$uuid', {dragging: $dragging, touchZoom: $touchZoom, scrollWheelZoom: $scrollWheelZoom, doubleClickZoom: $doubleClickZoom, boxZoom: $boxZoom, tap: $tap, tapTolerance: $tapTolerance, trackResize: $trackResize, worldCopyJump: $worldCopyJump, closePopupOnClick: $closePopupOnClick, bounceAtZoomLimits: $bounceAtZoomLimits});";
 		$r .= "map$uuid.attributionControl.setPrefix('');";
 		$r .= "var baselayer$uuid = new L.TileLayer('$server', {maxZoom: $maxZoom, attribution: '$copyright', detectRetina: $detectRetina});";
 		$r .= "var koord$uuid     = new L.LatLng($lat, $lon);";

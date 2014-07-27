@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="content" method="upgrade">
   <name>OSM Plugin</name>
-  <creationDate>Januar 12, 2014</creationDate>
+  <creationDate>July 27, 2014</creationDate>
   <author>Ariel Küchler</author>
-  <authorEmail>ariel@kuechler.info</authorEmail>
-  <authorUrl>http://www.kuechler.info</authorUrl>
+  <authorUrl>https://github.com/admiralsmaster</authorUrl>
   <copyright>Ariel Küchler</copyright>
   <license>MIT License or GPL-3.0, Leaflet is provided under the BSD 2-Clause License, see attached files</license>
   <version>@version@</version>
@@ -12,9 +11,16 @@
         <![CDATA[
         <h1>OSM Plugin</h1>
         <p>by Ariel K&uuml;chler</p>
-        <p>see <a href="https://www.kuechler.info/osm">https://www.kuechler.info/osm</a></p>
+        <p>see <a href="https://github.com/admiralsmaster/osm_akuechler">https://github.com/admiralsmaster/osm_akuechler</a></p>
 	    <h2>Versions</h2>
         <ol>
+        <li>1.2.0
+       		<ul>
+            <li>leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#073-may-23-2014">0.7.3</a></li>
+            <li>Support Interaction Options</li>
+            <li>Fix default value for retina support.</li>
+            </ul>
+        </li>
         <li>1.1.0
        		<ul>
             <li>It is possible to configurate the Retina detection of the Leaflet library. Default is activate.</li>
@@ -89,12 +95,68 @@
 			<option value="2">CDN usage HTTPS</option>
 		</field>
 		
-		<field name="detect-retina" type="list" default="1" label="Detect Retina" 
+		<field name="detect-retina" type="list" default="true" label="Detect Retina" 
 	    	description="Activate the Retina detection of Leaflet library.">
 		  <option value="true">YES</option>
 		  <option value="false">NO</option>
 		</field>
-      </fieldset>
+
+		<field name="dragging" type="list" default="true" label="Map draggable" 
+	    	description="Whether the map be draggable with mouse/touch or not.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		<field name="touchZoom" type="list" default="true" label="Touch draggable" 
+	    	description="Whether the map can be zoomed by touch-dragging with two fingers.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		<field name="scrollWheelZoom" type="list" default="true" label="With mouse zoomable" 
+	    	description="Whether the map can be zoomed by using the mouse wheel. If passed 'center', it will zoom to the center of the view regardless of where the mouse was.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		<field name="doubleClickZoom" type="list" default="true" label="Map zoomed in by double clicking" 
+	    	description="Whether the map can be zoomed in by double clicking on it and zoomed out by double clicking while holding shift. If passed 'center', double-click zoom will zoom to the center of the view regardless of where the mouse was.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		<field name="boxZoom" type="list" default="true" label="With mouse rectangular zoomable" 
+	    	description="Whether the map can be zoomed to a rectangular area specified by dragging the mouse while pressing shift.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		
+		<field name="tap" type="list" default="true" label="Map supporting instant taps" 
+	    	description="Enables mobile hacks for supporting instant taps (fixing 200ms click delay on iOS/Android) and touch holds (fired as contextmenu events).">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		<field name="tapTolerance" type="integer" default="15" label="Tap tolerance in pixel" 
+        	description="The max number of pixels a user can shift his finger during touch for it to be considered a valid tap."
+        	first="0" last="1000" step="1" />
+		<field name="trackResize" type="list" default="true" label="Map handle browser resizing" 
+	    	description="Whether the map automatically handles browser window resize to update itself.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		<field name="worldCopyJump" type="list" default="false" label="World copy jump" 
+	    	description="With this option enabled, the map tracks when you pan to another 'copy' of the world and seamlessly jumps to the original one so that all overlays like markers and vector layers are still visible.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		<field name="closePopupOnClick" type="list" default="true" label="Popup close when user click map" 
+	    	description="Set it to false if you don't want popups to close when user clicks the map.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+		<field name="bounceAtZoomLimits" type="list" default="true" label="Boucing on zoom bounces" 
+	    	description="Set it to false if you don't want the map to zoom beyond min/max zoom and then bounce back when pinch-zooming.">
+		  <option value="true">YES</option>
+		  <option value="false">NO</option>
+		</field>
+
+	  </fieldset>
     </fields>
   </config>
 </extension>
