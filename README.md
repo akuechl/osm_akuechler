@@ -10,6 +10,11 @@ The plugin use the Leaflet javascript library.
 
 The advantage of OpenStreetMap is that no license fees such as Google maps (see [here](https://developers.google.com/maps/faq#usage_calculated)) are necessary. OpenStreetMap (OSM) is a collaborative project to create a free editable map of the world. (see [Wikipedia](https://en.wikipedia.org/wiki/OpenStreetMap))
 
+Example
+----------------
+
+An example can be found [here](https://www.kuechler.info/osm).
+
 Usage
 ---------------
 
