@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="content" method="upgrade">
   <name>OSM Plugin</name>
-  <creationDate>July 27, 2014</creationDate>
+  <creationDate>November 25, 2014</creationDate>
   <author>Ariel Küchler</author>
   <authorUrl>https://github.com/admiralsmaster</authorUrl>
   <copyright>Ariel Küchler</copyright>
@@ -14,6 +14,12 @@
         <p>see <a href="https://github.com/admiralsmaster/osm_akuechler">https://github.com/admiralsmaster/osm_akuechler</a></p>
 	    <h2>Versions</h2>
         <ol>
+        <li>1.3.0
+            <ul>
+            <li>add support for <a href="http://www.jsdelivr.com/">jsdelivr</a></li>
+            <li><b>Please check your CDN configuration after installation.</b></li>
+            </ul>
+        </li>
         <li>1.2.0
        		<ul>
             <li>leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#073-may-23-2014">0.7.3</a></li>
@@ -88,11 +94,11 @@
         <field name="maxZoom" type="integer" default="18" label="Max Zoom" 
         	description="The max zoom level of tiles." first="1" last="18" step="1" />
         
-        <field name="cdn-cloudflare" type="radio" default="0" label="Use CDN JS" 
-        	description="Use Cloudflares CDNJS or local files">
+        <field name="cdn-usage" type="radio" default="0" label="Use CDN JS" 
+        	description="Use Cloudflares CDNJS, JsDelivr or local files">
 			<option value="0">Local usage</option>
-			<option value="1">CDN usage HTTP</option>
-			<option value="2">CDN usage HTTPS</option>
+			<option value="1">Cloudflares CDNJS</option>
+			<option value="2">JsDelivr</option>
 		</field>
 		
 		<field name="detect-retina" type="list" default="true" label="Detect Retina" 

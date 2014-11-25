@@ -1,7 +1,7 @@
 osm_akuechler
 =============
 
-A Joomla Plugin for Joomla 2.5 to show an Openstreetmap map.
+A Joomla Plugin for Joomla 2.5 and 3.x to show an Openstreetmap map.
 The plugin use the Leaflet javascript library.
 
 1. [Joomla](http://www.joomla.org/)
@@ -18,7 +18,7 @@ An example can be found [here](https://www.kuechler.info/osm).
 Usage
 ---------------
 
-Write in one line (without any spaces between "{" and "osm"), i.e.
+Write in one line, i.e.
 
 ```html
 {osm height='400' lat='50.9918' lon='13.7815' zoom='14' popup='<h3>Kinder- und Jugendbauernhof Nickern e.V.</h3> <a href="http://www.kinderundjugendbauernhof.de/">Homepage</a>'}
@@ -37,6 +37,7 @@ popup 	| HTML text for marker popup.
 Version
 --------------
 
+* **Version 1.3.0**: (November 25, 2014) add support for [jsdelivr](http://www.jsdelivr.com/)
 * **Version 1.2.0**: (July 27, 2014) leafletjs upgrade to 0.7.3, Support Interaction Options from leaflet, Fix default value for retina support
 * **Version 1.1.0**: (January 12, 2014) add retina configuration, possiblility to configure max zoom for tiles and copyright hint.
 * **Version 1.0.6**: (January 12, 2014) leaflet 0.7.1

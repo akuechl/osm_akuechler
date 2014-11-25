@@ -22,7 +22,7 @@ class plgContentOsm_akuechler extends JPlugin
 
 	var $maxZoom = 18;
 	
-	var $cdnCloudflare = 0;
+	var $cdnUsage = 0;
 	
 	var $detectRetina = true;
 	
@@ -53,12 +53,12 @@ class plgContentOsm_akuechler extends JPlugin
 		parent::__construct( $subject, $config );
 	}
 	
-	function useCdn() {
-		return $this->params->get('cdn-cloudflare', $this->cdnCloudflare) != 0;
+	function useCloudflareCdn() {
+	   return $this->params->get('cdn-usage', $this->cdnUsage) == 1;
 	}
 	
-	function useHttpsCdn() {
-		return $this->params->get('cdn-cloudflare', $this->cdnCloudflare) == 2;
+	function useJsdelivrCdn() {
+		return $this->params->get('cdn-usage', $this->cdnUsage) == 2;
 	}
 	
 	function onContentPrepare( $context, &$row, &$params, $limitstart=0 ) {
@@ -80,15 +80,13 @@ class plgContentOsm_akuechler extends JPlugin
 		if ( $count ) {
 			$document = JFactory::getDocument();
 			
-			if ($this->useCdn()) {
-				if ($this->useHttpsCdn()) {
-					$document->addStyleSheet('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css');
-					$document->addScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js');
-				}else {
-					$document->addStyleSheet('http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css');
-					$document->addScript('http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js');
-				}
-			} else {
+			if ($this->useCloudflareCdn()) {
+				$document->addStyleSheet('//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css');
+				$document->addScript('//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js');
+			} else if ($this->useJsdelivrCdn()) {
+                $document->addStyleSheet('//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css');
+                $document->addScript('//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js');
+            } else {
 				$document->addStyleSheet('plugins/content/Osm_akuechler/leaflet/leaflet.css');
 				$document->addScript('plugins/content/Osm_akuechler/leaflet/leaflet.js');
 			}
