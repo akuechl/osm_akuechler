@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="content" method="upgrade">
   <name>OSM Plugin</name>
-  <creationDate>November 25, 2014</creationDate>
+  <creationDate>May 13, 2015</creationDate>
   <author>Ariel Küchler</author>
   <authorUrl>https://github.com/admiralsmaster</authorUrl>
   <copyright>Ariel Küchler</copyright>
