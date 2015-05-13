@@ -1,0 +1,7 @@
+/* OSM */
+.osm-map {
+  height: 400px;
+}
+.osm-map .osm-point {
+  display: none;
+}

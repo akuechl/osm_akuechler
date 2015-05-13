@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="" default="all" basedir=".">
 
-	<property name="version" value="1.3.0" />
+	<property name="version" value="2.0.0" />
 	<property name="pluginname" value="Osm_akuechler" />
 	<property name="dist-folder" value="dist" />
 	<property name="build-folder" value="${dist-folder}/build" />
-
+	<property name="yui-url" value="https://repo1.maven.org/maven2/com/yahoo/platform/yui/yuicompressor/2.4.8/yuicompressor-2.4.8.jar"/>
+	
 	<target name="clean">
 		<delete dir="${dist-folder}" />
 		<delete dir="${build-folder}" />
@@ -14,6 +15,7 @@
 	<target name="prepare">
 		<mkdir dir="${dist-folder}" />
 		<mkdir dir="${build-folder}" />
+		<get src="${yui-url}" dest="${dist-folder}/yuicompressor.jar"/>
 	</target>
 
 	<target name="pack" depends="prepare,build">
@@ -25,12 +27,16 @@
 			<fileset dir="${basedir}">
 				<include name="leaflet/**" />
 				<include name="licenses/**" />
+				<include name="css/**" />
+			    <include name="js/**" />
 				<include name="${pluginname}.php" />
 				<include name="${pluginname}.xml" />
 				<include name="index.html" />
 			</fileset>
 		</copy>
 		<replace file="${build-folder}/${pluginname}.xml" token="@version@" value="${version}" />
+		<java fork="true" jar="${dist-folder}/yuicompressor.jar" args="-v -o ${build-folder}/js/${pluginname}.min.js ${build-folder}/js/${pluginname}.js" />
+		<java fork="true" jar="${dist-folder}/yuicompressor.jar" args="-v -o ${build-folder}/css/${pluginname}.min.css ${build-folder}/css/${pluginname}.css" />
 	</target>
 
 	<target name="all" depends="clean,pack" />

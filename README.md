@@ -20,23 +20,38 @@ Usage
 
 Write in one line, i.e.
 
-```html
-{osm height='400' lat='50.9918' lon='13.7815' zoom='14' popup='<h3>Kinder- und Jugendbauernhof Nickern e.V.</h3> <a href="http://www.kinderundjugendbauernhof.de/">Homepage</a>'}
+```xml
+<div class="osm-map" data-lat="51.047382" data-lon="13.734087" data-zoom="17">
+  <div class="osm-point" data-lat="51.047382" data-lon="13.734087">
+    <h3>
+    	Spielplatz in der Innenstadt von Dresden.
+  	</h3>
+  </div>
+  <div class="osm-point" data-lat="51.0466" data-lon="13.733087">
+    <h3>
+    	Parkplatz.
+  	</h3>
+    <p>
+      Hier könnt ihr parken.
+    </p>
+  </div>
+</div>
 ```
 
 Name	| Description
 ------- | -------------
-height 	| Height of the map in pixel.
-lat 	| Coordinate, Latitude
-lon 	| Coordinate, Longitude
-zoom 	| Zoom factor, depends on tiles server, between 1 and 18.
-popup 	| HTML text for marker popup.
-
+osm-map 	| DIV tag with the card data.
+osm-point	| DIV tag with a points, you can add lots of points. Included HTML text is for marker popup.
+data-lat 	| Coordinate, Latitude
+data-lon 	| Coordinate, Longitude
+data-zoom 	| Zoom factor, depends on tiles server, between 1 and 18.
+height 	| The height of DIV is the height of the card. Set the height via CSS, default is 400px.
 
 
 Version
 --------------
 
+* **Version 2.0.0**: (May 13, 2015) Change the API. Now you can use HTML-Tags only.
 * **Version 1.3.0**: (November 25, 2014) add support for [jsdelivr](http://www.jsdelivr.com/)
 * **Version 1.2.0**: (July 27, 2014) leafletjs upgrade to 0.7.3, Support Interaction Options from leaflet, Fix default value for retina support
 * **Version 1.1.0**: (January 12, 2014) add retina configuration, possiblility to configure max zoom for tiles and copyright hint.
@@ -53,7 +68,7 @@ License
 
 You can choose: [MIT License](http://opensource.org/licenses/mit-license) or [GPL-3.0](http://opensource.org/licenses/gpl-3.0)
 
-Leaflet is provided with the [BSD 2-Clause License](https://github.com/CloudMade/Leaflet/blob/v0.4.5/LICENSE).
+Leaflet is provided with the [BSD 2-Clause License](https://github.com/Leaflet/Leaflet/blob/master/LICENSE).
 
 
 Configuration
