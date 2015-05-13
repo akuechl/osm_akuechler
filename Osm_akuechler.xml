@@ -14,6 +14,11 @@
         <p>see <a href="https://github.com/admiralsmaster/osm_akuechler">https://github.com/admiralsmaster/osm_akuechler</a></p>
 	    <h2>Versions</h2>
         <ol>
+        <li>2.0.0
+        	<ul>
+        	<li>Change the API. Now you can use HTML-Tags only.</li>
+        	</ul>
+        </li>
         <li>1.3.0
             <ul>
             <li>add support for <a href="http://www.jsdelivr.com/">jsdelivr</a></li>
@@ -79,6 +84,8 @@
   <files>
     <folder>leaflet</folder>
     <folder>licenses</folder>
+    <folder>css</folder>
+    <folder>js</folder>
     <filename plugin="Osm_akuechler">Osm_akuechler.php</filename>
     <filename>index.html</filename>
   </files>
