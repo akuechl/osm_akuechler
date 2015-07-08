@@ -1,5 +1,5 @@
-osm_akuechler
-=============
+osm_akuechler [![Build Status](https://travis-ci.org/admiralsmaster/osm_akuechler.svg?branch=master)](https://travis-ci.org/admiralsmaster/osm_akuechler)
+=================================================================
 
 A Joomla Plugin for Joomla 2.5 and 3.x to show an Openstreetmap map.
 The plugin use the Leaflet javascript library.
