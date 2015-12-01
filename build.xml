@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="" default="all" basedir=".">
 
-	<property name="version" value="2.0.0" />
+	<property name="version" value="2.1.0" />
 	<property name="pluginname" value="Osm_akuechler" />
 	<property name="dist-folder" value="dist" />
 	<property name="build-folder" value="${dist-folder}/build" />
 	<property name="yui-url" value="https://repo1.maven.org/maven2/com/yahoo/platform/yui/yuicompressor/2.4.8/yuicompressor-2.4.8.jar"/>
+	
+	<!--
+	<property name="proxy.port" value="8080"/>
+	<property name="proxy.host" value="proxy"/>
+	<property name="proxy.user" value=""/>
+	<property name="proxy.pass" value=""/>
+	<setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
+	      proxyuser="${proxy.user}" proxypassword="${proxy.pass}"/>
+	-->
 	
 	<target name="clean">
 		<delete dir="${dist-folder}" />

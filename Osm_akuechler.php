@@ -72,11 +72,11 @@ class plgContentOsm_akuechler extends JPlugin {
         $document = & JFactory::getDocument ();
         
         if ($this->params->get ( 'cdn-usage', $this->cdnUsage ) == 1) {
-            $document->addStyleSheet ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css' );
-            $document->addScript ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js' );
+            $document->addStyleSheet ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css' );
+            $document->addScript ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js' );
         } else if ($this->params->get ( 'cdn-usage', $this->cdnUsage ) == 2) {
-            $document->addStyleSheet ( '//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css' );
-            $document->addScript ( '//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js' );
+            $document->addStyleSheet ( '//cdn.jsdelivr.net/leaflet/0.7.7/leaflet.css' );
+            $document->addScript ( '//cdn.jsdelivr.net/leaflet/0.7.7/leaflet.js' );
         } else {
             $document->addStyleSheet ( 'plugins/content/Osm_akuechler/leaflet/leaflet.css' );
             $document->addScript ( 'plugins/content/Osm_akuechler/leaflet/leaflet.js' );
