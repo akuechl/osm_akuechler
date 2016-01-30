@@ -1,4 +1,4 @@
-osm_akuechler [![Build Status](https://travis-ci.org/admiralsmaster/osm_akuechler.svg?branch=master)](https://travis-ci.org/admiralsmaster/osm_akuechler)
+osm_akuechler [![Build Status](https://travis-ci.org/admiralsmaster/osm_akuechler.svg?branch=master)](https://travis-ci.org/admiralsmaster/osm_akuechler) [![Codacy Badge](https://api.codacy.com/project/badge/grade/ca55f3e5de3548ffbfb64a63cc1adf93)](https://www.codacy.com/app/github-ariel/osm_akuechler)
 =================================================================
 
 A Joomla Plugin for Joomla 2.5 and 3.x to show an Openstreetmap map.
