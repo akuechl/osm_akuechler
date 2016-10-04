@@ -51,6 +51,7 @@ height 	| The height of DIV is the height of the card. Set the height via CSS, 
 Version
 --------------
 
+* **Version 2.3.0**: (Oct 4th, 2016) update leafletjs to 1.0.1
 * **Version 2.2.0**: (Sep 27, 2016) update leafletjs to 1.0.0
 * **Version 2.1.0**: (Dec 1, 2015) update leafletjs to 0.7.7
 * **Version 2.0.0**: (May 13, 2015) Change the API. Now you can use HTML-Tags only.

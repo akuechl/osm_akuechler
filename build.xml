@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="" default="all" basedir=".">
 
-	<property name="version" value="2.2.0" />
+	<property name="version" value="2.3.0" />
 	<property name="pluginname" value="Osm_akuechler" />
 	<property name="dist-folder" value="dist" />
 	<property name="build-folder" value="${dist-folder}/build" />

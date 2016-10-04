@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      Joomla
- * @copyright    Copyright (C) 2011-2014 Ariel Küchler. All rights reserved.
+ * @copyright    Copyright (C) 2011-2016 Ariel Küchler. All rights reserved.
  * @license      MIT License (http://opensource.org/licenses/mit-license copyright information see above) OR GPL-3.0 (http://opensource.org/licenses/gpl-3.0)
  */
 defined ( '_JEXEC' ) or die ( 'Restricted access' );
@@ -72,11 +72,11 @@ class plgContentOsm_akuechler extends JPlugin {
         $document = & JFactory::getDocument ();
         
         if ($this->params->get ( 'cdn-usage', $this->cdnUsage ) == 1) {
-            $document->addStyleSheet ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/leaflet.css' );
-            $document->addScript ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/leaflet.js' );
+            $document->addStyleSheet ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css' );
+            $document->addScript ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.js' );
         } else if ($this->params->get ( 'cdn-usage', $this->cdnUsage ) == 2) {
-            $document->addStyleSheet ( '//cdn.jsdelivr.net/leaflet/1.0.0/leaflet.css' );
-            $document->addScript ( '//cdn.jsdelivr.net/leaflet/1.0.0/leaflet.js' );
+            $document->addStyleSheet ( '//cdn.jsdelivr.net/leaflet/1.0.1/leaflet.css' );
+            $document->addScript ( '//cdn.jsdelivr.net/leaflet/1.0.1/leaflet.js' );
         } else {
             $document->addStyleSheet ( 'plugins/content/Osm_akuechler/leaflet/leaflet.css' );
             $document->addScript ( 'plugins/content/Osm_akuechler/leaflet/leaflet.js' );
