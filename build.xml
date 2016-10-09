@@ -2,12 +2,13 @@
 <project name="" default="all" basedir=".">
 
 	<property name="version" value="2.3.0" />
+	<property name="leaflet-version" value="1.0.1" />
 	<property name="pluginname" value="Osm_akuechler" />
 	<property name="dwn-folder" value="downloads" />
 	<property name="dist-folder" value="dist" />
 	<property name="build-folder" value="${dist-folder}/build" />
 	<property name="yui-url" value="https://repo1.maven.org/maven2/com/yahoo/platform/yui/yuicompressor/2.4.8/yuicompressor-2.4.8.jar" />
-	<property name="leaflet-url" value="https://repo1.maven.org/maven2/org/webjars/bower/leaflet/1.0.1/leaflet-1.0.1.jar" />
+	<property name="leaflet-url" value="https://repo1.maven.org/maven2/org/webjars/bower/leaflet/${leaflet-version}/leaflet-${leaflet-version}.jar" />
 
 	<available file="${dwn-folder}/yuicompressor.jar" property="exists.yui" />
 	<available file="${dwn-folder}/leaflet.jar" property="exists.leaflet" />
@@ -65,6 +66,7 @@
 			</fileset>
 		</copy>
 		<replace file="${build-folder}/${pluginname}.xml" token="@version@" value="${version}" />
+		<replace file="${build-folder}/${pluginname}.php" token="@leaflet-version@" value="${leaflet-version}" />
 		<java fork="true" jar="${dwn-folder}/yuicompressor.jar">
 			<arg line="-v"/>
 			<arg line="-o ${build-folder}/js/${pluginname}.min.js"/>
