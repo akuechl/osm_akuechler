@@ -3,10 +3,15 @@
 
 	<property name="version" value="2.3.0" />
 	<property name="pluginname" value="Osm_akuechler" />
+	<property name="dwn-folder" value="downloads" />
 	<property name="dist-folder" value="dist" />
 	<property name="build-folder" value="${dist-folder}/build" />
-	<property name="yui-url" value="https://repo1.maven.org/maven2/com/yahoo/platform/yui/yuicompressor/2.4.8/yuicompressor-2.4.8.jar"/>
-	
+	<property name="yui-url" value="https://repo1.maven.org/maven2/com/yahoo/platform/yui/yuicompressor/2.4.8/yuicompressor-2.4.8.jar" />
+	<property name="leaflet-url" value="https://repo1.maven.org/maven2/org/webjars/bower/leaflet/1.0.1/leaflet-1.0.1.jar" />
+
+	<available file="${dwn-folder}/yuicompressor.jar" property="exists.yui" />
+	<available file="${dwn-folder}/leaflet.jar" property="exists.leaflet" />
+
 	<!--
 	<property name="proxy.port" value="8080"/>
 	<property name="proxy.host" value="proxy"/>
@@ -15,7 +20,7 @@
 	<setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
 	      proxyuser="${proxy.user}" proxypassword="${proxy.pass}"/>
 	-->
-	
+
 	<target name="clean">
 		<delete dir="${dist-folder}" />
 		<delete dir="${build-folder}" />
@@ -24,28 +29,54 @@
 	<target name="prepare">
 		<mkdir dir="${dist-folder}" />
 		<mkdir dir="${build-folder}" />
-		<get src="${yui-url}" dest="${dist-folder}/yuicompressor.jar"/>
+		<mkdir dir="${dwn-folder}" />
+	</target>
+
+	<target name="dwnyui" unless="exists.yui">
+		<get src="${yui-url}" dest="${dwn-folder}/yuicompressor.jar" />
+	</target>
+
+	<target name="dwnleaflet" unless="exists.leaflet">
+		<get src="${leaflet-url}" dest="${dwn-folder}/leaflet.jar" />
 	</target>
 
 	<target name="pack" depends="prepare,build">
 		<zip destfile="${dist-folder}/${pluginname}_${version}.zip" basedir="${build-folder}" />
 	</target>
 
-	<target name="build" depends="prepare">
+	<target name="build" depends="prepare, dwnleaflet, dwnyui">
+		<unjar src="${dwn-folder}/leaflet.jar" dest="${dist-folder}/leaflet/">
+			<patternset>
+				<include name="META-INF/resources/webjars/leaflet/*/dist/**" />
+			</patternset>
+			<cutdirsmapper dirs="6" />
+		</unjar>
 		<copy todir="${build-folder}">
-			<fileset dir="${basedir}">
+			<fileset dir="${dist-folder}">
 				<include name="leaflet/**" />
+			</fileset>
+			<fileset dir="${basedir}">
 				<include name="licenses/**" />
 				<include name="css/**" />
-			    <include name="js/**" />
+				<include name="js/**" />
 				<include name="${pluginname}.php" />
 				<include name="${pluginname}.xml" />
 				<include name="index.html" />
 			</fileset>
 		</copy>
 		<replace file="${build-folder}/${pluginname}.xml" token="@version@" value="${version}" />
-		<java fork="true" jar="${dist-folder}/yuicompressor.jar" args="-v -o ${build-folder}/js/${pluginname}.min.js ${build-folder}/js/${pluginname}.js" />
-		<java fork="true" jar="${dist-folder}/yuicompressor.jar" args="-v -o ${build-folder}/css/${pluginname}.min.css ${build-folder}/css/${pluginname}.css" />
+		<java fork="true" jar="${dwn-folder}/yuicompressor.jar">
+			<arg line="-v"/>
+			<arg line="-o ${build-folder}/js/${pluginname}.min.js"/>
+			<arg line="${build-folder}/js/${pluginname}.js" />
+			<arg line="--charset utf-8" />
+		</java>
+		<java fork="true" jar="${dwn-folder}/yuicompressor.jar">
+			<arg line="-v"/>
+			<arg line="-o ${build-folder}/css/${pluginname}.min.css"/>
+			<arg line="${build-folder}/css/${pluginname}.css" />
+			<arg line="--charset utf-8" />
+		</java>
 	</target>
 
 	<target name="all" depends="clean,pack" />
