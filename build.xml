@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="" default="all" basedir=".">
 
-	<property name="version" value="2.3.0" />
-	<property name="leaflet-version" value="1.0.1" />
+	<property name="version" value="2.4.0" />
+	<property name="leaflet-version" value="1.0.3" />
 	<property name="pluginname" value="Osm_akuechler" />
 	<property name="dwn-folder" value="downloads" />
 	<property name="dist-folder" value="dist" />
@@ -52,6 +52,13 @@
 			</patternset>
 			<cutdirsmapper dirs="6" />
 		</unjar>
+		<unjar src="${dwn-folder}/leaflet.jar" dest="${dist-folder}/">
+			<patternset>
+				<include name="META-INF/resources/webjars/leaflet/*/LICENSE"/>
+			</patternset>
+			<cutdirsmapper dirs="5" />
+		</unjar>
+		<move file="${dist-folder}/LICENSE" tofile="${dist-folder}/leaflet-license" />
 		<copy todir="${build-folder}">
 			<fileset dir="${dist-folder}">
 				<include name="leaflet/**" />
@@ -63,6 +70,11 @@
 				<include name="${pluginname}.php" />
 				<include name="${pluginname}.xml" />
 				<include name="index.html" />
+			</fileset>
+		</copy>
+		<copy todir="${build-folder}/licenses">
+			<fileset dir="${dist-folder}">
+				<include name="leaflet-license"/>
 			</fileset>
 		</copy>
 		<replace file="${build-folder}/${pluginname}.xml" token="@version@" value="${version}" />
