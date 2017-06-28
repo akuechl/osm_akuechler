@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="content" method="upgrade">
   <name>OSM Plugin</name>
-  <creationDate>April. 29th, 2017</creationDate>
+  <creationDate>June 28th, 2017</creationDate>
   <author>Ariel Küchler</author>
   <authorUrl>https://github.com/admiralsmaster</authorUrl>
   <copyright>Ariel Küchler</copyright>
@@ -14,6 +14,12 @@
         <p>see <a href="https://github.com/admiralsmaster/osm_akuechler">https://github.com/admiralsmaster/osm_akuechler</a></p>
 	    <h2>Versions</h2>
         <ol>
+        <li>2.5.0
+        	<ul>
+        	<li>leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#110-2017-06-27">1.1.0</a></li>
+        	<li>add <a href="https://unpkg.com/">unpkg.com</a> CDN</li>
+        	</ul>
+        </li>
         <li>2.4.0
         	<ul>
         	<li>leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#103-january-23-2017">1.0.3</a></li>
@@ -122,10 +128,11 @@
         	description="The max zoom level of tiles." first="1" last="18" step="1" />
         
         <field name="cdn-usage" type="radio" default="0" label="Use CDN JS" 
-        	description="Use Cloudflares CDNJS, JsDelivr or local files">
+        	description="Use Cloudflares CDNJS, JsDelivr, unpkg.com or local files">
 			<option value="0">Local usage</option>
 			<option value="1">Cloudflares CDNJS</option>
 			<option value="2">JsDelivr</option>
+			<option value="3">unpkg.com</option>
 		</field>
 		
 		<field name="detect-retina" type="list" default="true" label="Detect Retina" 
