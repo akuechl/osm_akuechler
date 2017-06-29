@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="" default="all" basedir=".">
 
-	<property name="version" value="2.5.0" />
+	<property name="version" value="2.6.0b1" />
 	<property name="leaflet-version" value="1.1.0" />
 	<property name="pluginname" value="Osm_akuechler" />
 	<property name="dwn-folder" value="downloads" />
@@ -13,14 +13,12 @@
 	<available file="${dwn-folder}/yuicompressor.jar" property="exists.yui" />
 	<available file="${dwn-folder}/leaflet.jar" property="exists.leaflet" />
 
-	<!--
 	<property name="proxy.port" value="8080"/>
 	<property name="proxy.host" value="proxy"/>
 	<property name="proxy.user" value=""/>
 	<property name="proxy.pass" value=""/>
 	<setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
 	      proxyuser="${proxy.user}" proxypassword="${proxy.pass}"/>
-	-->
 
 	<target name="clean">
 		<delete dir="${dist-folder}" />
