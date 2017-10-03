@@ -123,7 +123,7 @@
   <config>
     <fields name="params">
       <fieldset name="basic">
-        <field name="url" type="url" default="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" label="Tiles URL"
+        <field name="url" type="url" default="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" label="Tiles URL"
           maxlength="1024" description="URL for tiles."></field>
           
         <field name="copyright" type="text" default='&#169; &lt;a href="http://www.openstreetmap.org" target="_blank"&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank"&gt;CC BY-SA&lt;/a&gt;' 

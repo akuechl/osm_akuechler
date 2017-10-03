@@ -11,7 +11,7 @@ JHtml::_ ( 'jquery.framework' );
 jimport ( 'joomla.plugin.plugin' );
 class plgContentOsm_akuechler extends JPlugin {
     var $copyright = '&copy; <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA</a>';
-    var $tileServer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var $tileServer = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var $maxZoom = 18;
     var $cdnUsage = 0;
     var $detectRetina = true;
@@ -28,13 +28,13 @@ class plgContentOsm_akuechler extends JPlugin {
     var $bounceAtZoomLimits = true;
     var $version = '@leaflet-version@';
        
-    function plgContentOsm_akuechler(&$subject, $config) {
+    function __construct(&$subject, $config) {
         parent::__construct ( $subject, $config );
     }
 
     function onContentPrepare($context, &$row, &$params, $limitstart = 0) {
         // fast fail
-        $app = & JFactory::getApplication ();
+        $app = JFactory::getApplication ();
         if ($app->isAdmin () || (JString::strpos ( $row->text, '{osm' ) === false && JString::strpos ( $row->text, 'osm-map' ) === false)) {
             return true;
         }
@@ -61,7 +61,7 @@ class plgContentOsm_akuechler extends JPlugin {
             }
             // new
             if ($resultNew) {
-                $document = & JFactory::getDocument ();
+                $document = JFactory::getDocument ();
                 $document->addScript ( 'plugins/content/Osm_akuechler/js/Osm_akuechler.min.js' );
                 $document->addStyleSheet ( 'plugins/content/Osm_akuechler/css/Osm_akuechler.min.css' );
             }
@@ -70,7 +70,7 @@ class plgContentOsm_akuechler extends JPlugin {
     }
 
     function _addLeafletScripts() {
-        $document = & JFactory::getDocument ();
+        $document = JFactory::getDocument ();
         
         if ($this->params->get ( 'cdn-usage', $this->cdnUsage ) == 1) {
             $document->addStyleSheet ( '//cdnjs.cloudflare.com/ajax/libs/leaflet/' . $this->version . '/leaflet.css' );
@@ -88,7 +88,7 @@ class plgContentOsm_akuechler extends JPlugin {
     }
 
     function _addConfig() {
-        $document = & JFactory::getDocument ();
+        $document = JFactory::getDocument ();
         
         $copyright = $this->params->get ( 'copyright', $this->copyright );
         $server = $this->params->get ( 'url', $this->tileServer );
@@ -111,7 +111,7 @@ class plgContentOsm_akuechler extends JPlugin {
     }
 
     function _getReplacmentOld(&$match) {
-        $document = & JFactory::getDocument ();
+        $document = JFactory::getDocument ();
         
         $zoom = $this->_getVariableOld ( 'zoom', $match );
         $height = $this->_getVariableOld ( 'height', $match );
