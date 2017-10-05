@@ -5,3 +5,13 @@
 .osm-map .osm-point {
   display: none;
 }
+/* 
+ Set the tiles size fix via CSS and "!important" to overwrite purity_iii template rules.
+ see https://github.com/admiralsmaster/osm_akuechler/issues/2
+ */
+.leaflet-tile.leaflet-tile-loaded {
+    width: 256px !important;
+}
+.leaflet-retina .leaflet-tile.leaflet-tile-loaded {
+    width: 128px !important;
+}
