@@ -14,8 +14,12 @@
         <p>see <a href="https://github.com/admiralsmaster/osm_akuechler">https://github.com/admiralsmaster/osm_akuechler</a></p>
 	    <h2>Versions</h2>
         <ol>
-        <li>2.6.0 beta 1
+        <li>2.6.0 beta 1 / 2.6.0 beta 2
         	<ul>
+        	<li><a href="https://github.com/admiralsmaster/osm_akuechler/issues/3">#3</a> leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#120-release-date-2017-08-08">1.2.0</a></li>
+        	<li><a href="https://github.com/admiralsmaster/osm_akuechler/issues/1">#1</a> Default tiles URL to HTTPS</li>
+        	<li><a href="https://github.com/admiralsmaster/osm_akuechler/issues/1">#1</a> Fix PHP warnings </li>
+        	<li><a href="https://github.com/admiralsmaster/osm_akuechler/issues/2">#2</a> Add CSS to prevent image resizing in purity_iii template</li>
         	<li>Add update server</li>
         	</ul>
         </li>
