@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="" default="all" basedir=".">
 
-	<property name="version" value="2.6.0" />
-	<property name="leaflet-version" value="1.2.0" />
+	<property name="version" value="2.7.0" />
+	<property name="leaflet-version" value="1.3.1" />
 	<property name="yui-version" value="2.4.8" />
 	
 	<property name="pluginname" value="Osm_akuechler" />
@@ -11,10 +11,12 @@
 	<property name="build-folder" value="${dist-folder}/build" />
 	
 	<property name="yui-url" value="https://repo1.maven.org/maven2/com/yahoo/platform/yui/yuicompressor/${yui-version}/yuicompressor-2.4.8.jar" />
-	<property name="leaflet-url" value="https://repo1.maven.org/maven2/org/webjars/bower/leaflet/${leaflet-version}/leaflet-${leaflet-version}.jar" />
-
+	<property name="leaflet-url" value="https://repo1.maven.org/maven2/org/webjars/leaflet/${leaflet-version}/leaflet-${leaflet-version}.jar" />
+	<property name="leaflet-license" value="https://cdn.jsdelivr.net/gh/Leaflet/Leaflet@${leaflet-version}/LICENSE" />
+	
 	<available file="${dwn-folder}/yuicompressor-${yui-version}.jar" property="exists.yui" />
 	<available file="${dwn-folder}/leaflet-${leaflet-version}.jar" property="exists.leaflet" />
+	<available file="${dwn-folder}/leaflet-license" property="exists.leaflet-license" />
 
 	<property name="proxy.port" value="8080"/>
 	<property name="proxy.host" value="proxy"/>
@@ -41,25 +43,22 @@
 	<target name="dwnleaflet" unless="exists.leaflet">
 		<get src="${leaflet-url}" dest="${dwn-folder}/leaflet-${leaflet-version}.jar" />
 	</target>
+	
+	<target name="dwnleafletlicense" unless="exists.leaflet-license">
+		<get src="${leaflet-license}" dest="${dwn-folder}/leaflet-license" />
+	</target>
 
 	<target name="pack" depends="prepare,build">
 		<zip destfile="${dist-folder}/${pluginname}_${version}.zip" basedir="${build-folder}" />
 	</target>
 
-	<target name="build" depends="prepare, dwnleaflet, dwnyui">
+	<target name="build" depends="prepare, dwnleaflet, dwnleafletlicense, dwnyui">
 		<unjar src="${dwn-folder}/leaflet-${leaflet-version}.jar" dest="${dist-folder}/leaflet/">
 			<patternset>
-				<include name="META-INF/resources/webjars/leaflet/*/dist/**" />
-			</patternset>
-			<cutdirsmapper dirs="6" />
-		</unjar>
-		<unjar src="${dwn-folder}/leaflet-${leaflet-version}.jar" dest="${dist-folder}/">
-			<patternset>
-				<include name="META-INF/resources/webjars/leaflet/*/LICENSE"/>
+				<include name="META-INF/resources/webjars/leaflet/${leaflet-version}/**" />
 			</patternset>
 			<cutdirsmapper dirs="5" />
 		</unjar>
-		<move file="${dist-folder}/LICENSE" tofile="${dist-folder}/leaflet-license" />
 		<copy todir="${build-folder}">
 			<fileset dir="${dist-folder}">
 				<include name="leaflet/**" />
@@ -74,7 +73,7 @@
 			</fileset>
 		</copy>
 		<copy todir="${build-folder}/licenses">
-			<fileset dir="${dist-folder}">
+			<fileset dir="${dwn-folder}">
 				<include name="leaflet-license"/>
 			</fileset>
 		</copy>
