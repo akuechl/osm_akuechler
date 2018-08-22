@@ -1,6 +1,6 @@
 <updates>
 	<!-- https://docs.joomla.org/Deploying_an_Update_Server -->
-	<update>
+	<!--update>
 		<name>OSM Plugin</name>
 		<description>OSM Plugin</description>
 		<element>Osm_akuechler</element>
@@ -19,7 +19,7 @@
 		<maintainerurl>https://github.com/admiralsmaster</maintainerurl>
 		<targetplatform name="joomla" version="3.[012345678]"/>
 		<php_minimum>5.6.30</php_minimum>
-	</update>	
+	</update-->	
 	<update>
 		<name>OSM Plugin</name>
 		<description>OSM Plugin</description>
@@ -27,10 +27,10 @@
 		<type>plugin</type>
 		<folder>content</folder>
 		<client>0</client>
-		<version>2.7.0</version>
+		<version>2.8.0</version>
 		<infourl>https://github.com/admiralsmaster/osm_akuechler</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/admiralsmaster/osm_akuechler/releases/download/v2.7.0/Osm_akuechler_2.7.0.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/admiralsmaster/osm_akuechler/releases/download/v2.8.0/Osm_akuechler_2.8.0.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
