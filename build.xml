@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="" default="all" basedir=".">
 
-	<property name="version" value="2.7.0" />
-	<property name="leaflet-version" value="1.3.1" />
+	<property name="version" value="2.8.0" />
+	<property name="leaflet-version" value="1.3.4" />
 	<property name="yui-version" value="2.4.8" />
 	
 	<property name="pluginname" value="Osm_akuechler" />
@@ -10,8 +10,8 @@
 	<property name="dist-folder" value="dist" />
 	<property name="build-folder" value="${dist-folder}/build" />
 	
-	<property name="yui-url" value="https://repo1.maven.org/maven2/com/yahoo/platform/yui/yuicompressor/${yui-version}/yuicompressor-2.4.8.jar" />
-	<property name="leaflet-url" value="https://repo1.maven.org/maven2/org/webjars/leaflet/${leaflet-version}/leaflet-${leaflet-version}.jar" />
+	<property name="yui-url" value="https://repo1.maven.org/maven2/com/yahoo/platform/yui/yuicompressor/${yui-version}/yuicompressor-${yui-version}.jar" />
+	<property name="leaflet-url" value="https://repo1.maven.org/maven2/org/webjars/npm/leaflet/${leaflet-version}/leaflet-${leaflet-version}.jar" />
 	<property name="leaflet-license" value="https://cdn.jsdelivr.net/gh/Leaflet/Leaflet@${leaflet-version}/LICENSE" />
 	
 	<available file="${dwn-folder}/yuicompressor-${yui-version}.jar" property="exists.yui" />
@@ -59,10 +59,12 @@
 			</patternset>
 			<cutdirsmapper dirs="5" />
 		</unjar>
-		<copy todir="${build-folder}">
-			<fileset dir="${dist-folder}">
-				<include name="leaflet/**" />
+		<copy todir="${build-folder}/leaflet">
+			<fileset dir="${dist-folder}/leaflet/dist">
+				<include name="**" />
 			</fileset>
+		</copy>
+		<copy todir="${build-folder}">
 			<fileset dir="${basedir}">
 				<include name="licenses/**" />
 				<include name="css/**" />
