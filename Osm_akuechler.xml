@@ -219,6 +219,7 @@
     </fields>
   </config>
   <updateservers>
+  	<server type="extension" priority="1" name="OSM Plugin Updates">https://joomla-extensions.frickelmeister.de/updates/osm_akuechler.xml</server>
     <server type="extension" priority="2" name="OSM Plugin Updates">https://admiralsmaster.github.io/osm_akuechler/updates/osm_akuechler.xml</server>
   </updateservers>
 </extension>
