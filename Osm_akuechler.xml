@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="content" method="upgrade">
   <name>OSM Plugin</name>
-  <creationDate>August 22nd, 2018</creationDate>
+  <creationDate>April 30th, 2019</creationDate>
   <author>Ariel Küchler</author>
   <authorUrl>https://github.com/admiralsmaster</authorUrl>
   <copyright>Ariel Küchler</copyright>
@@ -14,6 +14,11 @@
         <p>see <a href="https://github.com/admiralsmaster/osm_akuechler">https://github.com/admiralsmaster/osm_akuechler</a></p>
 	    <h2>Versions</h2>
 	    <ol>
+	    <li>2.9.0
+        	<ul>
+        	<li><a href="https://github.com/admiralsmaster/osm_akuechler/issues/9">#9</a> leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#140-2018-12-30">1.4.0</a></li>
+        	</ul>
+        </li>
 	    <li>2.8.0
         	<ul>
         	<li><a href="https://github.com/admiralsmaster/osm_akuechler/issues/7">#7</a> leafletjs upgrade to <a href="https://github.com/Leaflet/Leaflet/blob/master/CHANGELOG.md#134-2018-08-21">1.3.4</a></li>

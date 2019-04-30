@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      Joomla
- * @copyright    Copyright (C) 2011-2018 Ariel Küchler. All rights reserved.
+ * @copyright    Copyright (C) 2011-2019 Ariel Küchler. All rights reserved.
  * @license      MIT License (http://opensource.org/licenses/mit-license copyright information see above) OR GPL-3.0 (http://opensource.org/licenses/gpl-3.0)
  */
 defined ( '_JEXEC' ) or die ( 'Restricted access' );
