@@ -1,3 +1,5 @@
+
+* **Version 2.10.0**: (June 13nd, 2019) update leafletjs to 1.5.1 #10
 * **Version 2.9.0**: (April 30nd, 2019) update leafletjs to 1.4.0 #9
 * **Version 2.8.0**: (August 22nd, 2018) update leafletjs to 1.3.4 #7
 * **Version 2.7.0**: (April 10th, 2018) update leafletjs to 1.3.0 #6
