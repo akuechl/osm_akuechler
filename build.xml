@@ -18,13 +18,15 @@
 	<available file="${dwn-folder}/leaflet-${leaflet-version}.jar" property="exists.leaflet" />
 	<available file="${dwn-folder}/leaflet-license-${leaflet-version}" property="exists.leaflet-license" />
 
+	<!--
 	<property name="proxy.port" value="8080"/>
 	<property name="proxy.host" value="proxy"/>
 	<property name="proxy.user" value=""/>
 	<property name="proxy.pass" value=""/>
 	<setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
 	      proxyuser="${proxy.user}" proxypassword="${proxy.pass}"/>
-
+	-->
+	
 	<target name="clean">
 		<delete dir="${dist-folder}" />
 		<delete dir="${build-folder}" />
